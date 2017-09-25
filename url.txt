@@ -1,0 +1,155 @@
+CodeGenerator
+����һ��ʹ�� Freemarker �� Velocity ģ����������Ĺ��ߡ�
+
+��������ֻ�ǽ����ݿ��еı�ṹ������ȡ������Ȼ����ݽṹģ���ύ��ģ������, �������Զ����ģ����������Ҫ�Ĵ��롣
+
+�����ļ�
+    <?xml version="1.0" encoding="utf-8" standalone="no"?>
+    <configuration>
+        <classpath>
+            <!-- ����JDBC�������ֶ���� -->
+            <entry>lib/mysql-connector-java-5.1.36-bin.jar</entry>
+        </classpath>
+        <!-- ��������Ŀ���׼Ŀ¼ -->
+        <targetProject>D:\temp</targetProject>
+        <!-- ������ -->
+        <basePackage>org.joy</basePackage>
+        <!-- ģ���� -->
+        <moduleName>test</moduleName>
+        <templates>
+            <!-- ģ�� ���ֶ���� -->
+            <template name="ʵ����" engine="freemarker">
+                <!-- ģ���ļ� -->
+                <templateFile>./entity.ftl</templateFile>
+                <!-- �ļ�·�� -->
+                <targetPath>${targetProject}\src\${basePackage}\${moduleName}\entity\</targetPath>
+                <!-- �ļ��� -->
+                <targetFileName>${table.className}.java</targetFileName>
+                <!-- �ļ����� -->
+                <fileEncoding>UTF-8</fileEncoding>
+            </template>
+        </templates>
+    </configuration>
+ģ���п��õı����ͷ���
+String                targetProject       Ŀ�깤��·��(���뱣��Ļ�׼·��)
+String                basePackage         ��׼��
+String                moduleName          ģ����
+Map<String, Boolean>  template            ģ���Ƿ���ã��Ƿ�ѡ���ɣ�  
+table ����
+
+����
+
+String       tableName           ����
+
+String       tableType           ������
+
+String       tableAlias          �����
+
+String       remarks             ��ע��
+
+String       remarksUnicode      ��ע��תUnicode����ַ���
+
+String       className           ʵ������
+
+String       javaProperty        ʵ������Ϊ����ʱ������ == ${table.className?uncap_first}
+
+List<Column> primaryKeys         ������
+
+List<Column> baseColumns         �����ֶμ�
+
+List<Column> columns             �����ֶ�  == primaryKeys + baseColumns
+
+List<Key>    importedKeys        ���� importedKeys
+
+List<Key>    exportedKeys        ���� exportedKeys
+
+boolean      hasDateColumn       �Ƿ������������ֶ�
+
+boolean      hasBigDecimalColumn �Ƿ��� BigDecimal �ֶ�
+
+boolean      hasNotNullColumn    �Ƿ��зǿյĻ��������ֶ�
+
+boolean      hasNotBlankColumn   �Ƿ��зǿյ� String �ֶ�
+
+boolean      hasSearchableColumn �Ƿ��п������� �ֶ�
+Column
+
+����
+
+String  columnName        �ֶ���
+
+boolean primaryKey        �Ƿ�Ϊ����
+
+boolean foreignKey        �Ƿ�Ϊ���
+
+int     size              �ֶγ���
+
+int     decimalDigits     С��λ����
+
+boolean nullable          �Ƿ�ɿ�
+
+boolean autoincrement     �Ƿ�����
+
+boolean unique            �Ƿ�Ψһֵ
+
+boolean indexed           �Ƿ�������
+
+String  defaultValue      Ĭ��ֵ
+
+String  remarks           ע��
+
+String  remarksUnicode    ����תUnicode����ַ���
+
+int     jdbcType          ��Ӧ java.sql.Types
+
+String  jdbcTypeName      ��ӦjdbcType������
+
+String  javaProperty      ������
+
+String  javaType          java���ͣ�����String��Long��Integer
+
+String  javaPrimitiveType java�������ͣ�������ǻ�������ʱ��ͬ�� javaType
+
+String  fullJavaType      ������Java���ͣ����� java.lang.String
+
+String  getterMethodName  Get������  
+
+String  setterMethodName  Set������  
+
+boolean display           �Ƿ���ʾ  
+
+boolean searchable        �Ƿ������  
+
+boolean orderable         �Ƿ������  
+
+String  dict              �����ֵ���
+����
+
+boolean isString()        �Ƿ����ַ���
+
+boolean isFloatNumber()   �Ƿ��Ǹ����ͣ���Float��Double��BigDecimal
+
+boolean isIntegerNumber() �Ƿ������ͣ���Byte��Short��Integer��Long
+
+boolean isBigDecimal()    �Ƿ���BigDecimal����
+
+boolean isBoolean()       �Ƿ��ǲ�������
+
+boolean isDate()          �Ƿ����������ͣ���Date��Timestamp��Time
+
+boolean isBLOB()          �Ƿ��� BLOB��CLOB��LONGVARCHAR��LONGVARBINARY��VARBINARY
+
+boolean isPrimitiveType() �Ƿ��ǻ�������
+
+boolean hasDict()         �Ƿ�ʹ���������ֵ�
+Key
+
+String  pkTableName       PKTABLE_NAME
+
+String  pkColumnName      PKCOLUMN_NAME
+
+String  fkTableName       FKTABLE_NAME
+
+String  fkColumnName      FKCOLUMN_NAME
+
+Integer seq               KEY_SEQ

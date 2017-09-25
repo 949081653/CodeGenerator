@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration>
+    <classpath>
+        <entry>lib/ojdbc14.jar</entry>
+        <entry>lib/sqljdbc4.jar</entry>
+        <entry>lib/mysql-connector-java-5.1.36-bin.jar</entry>
+        <entry>lib/postgresql-8.2-505.jdbc2.jar</entry>
+    </classpath>
+    <connections>
+        <database name="hydee">
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://139.196.189.67:3283/db_facturer?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true</url>
+            <username>root</username>
+            <password>HyCs!*726</password>
+            <schema/>
+        </database>
+        <database name="hdsec">
+            <driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
+            <url>jdbc:sqlserver://106.14.238.254:1433;DatabaseName=hdsec</url>
+            <username>sa</username>
+            <password>xmsoft_896Hd@</password>
+            <schema/>
+        </database>
+        <database name="localhost">
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://localhost:3306/taotao?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true</url>
+            <username>root</username>
+            <password>123456</password>
+            <schema/>
+        </database>
+    </connections>
+    <targetProject>D:\temp</targetProject>
+    <basePackage>com.taotao.manager</basePackage>
+    <moduleName>company_account</moduleName>
+    <templates>
+        <template engine="freemarker" id="entity1" name="实体类" selected="false">
+            <templateFile>entity.ftl</templateFile>
+            <targetPath>${targetProject}\src\${basePackage}\${moduleName}\entity\</targetPath>
+            <targetFileName>${table.className}.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="velocity" id="entity2" name="实体类" selected="false">
+            <templateFile>entity.vm</templateFile>
+            <targetPath>${targetProject}\\src\\${basePackage}\\${moduleName}\\entity\\</targetPath>
+            <targetFileName>${table.className}2.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" id="mybatisMarker" name="xml" selected="true">
+            <templateFile>mybatisM.ftl</templateFile>
+            <targetPath>${targetProject}\\src\\${basePackage}\\xml\\</targetPath>
+            <targetFileName>${table.className}-Mapper.xml</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" id="baseDao" name="xml" selected="false">
+            <templateFile>baseDao.ftl</templateFile>
+            <targetPath>${targetProject}\\src\\${basePackage}\\dao\\</targetPath>
+            <targetFileName>${table.className}Dao.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+    </templates>
+</configuration>

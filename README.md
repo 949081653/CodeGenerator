@@ -159,5 +159,5 @@ CodeGenerator
     Integer seq               KEY_SEQ
 
 
-##作者
-ptma@163.com
+## 转载作者
+https://github.com/ptma/CodeGenerator
